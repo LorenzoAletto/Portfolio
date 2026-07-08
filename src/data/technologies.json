@@ -1,0 +1,13 @@
+[
+  { "name": "HTML", "logo": "/logos/HTML5_logo.png" },
+  { "name": "CSS", "logo": "/logos/CSS3_logo.png" },
+  { "name": "JavaScript", "logo": "/logos/JavaScript-Logo.png", "color": "#F7DF1E" },
+  { "name": "TypeScript", "logo": "/logos/TypeScript_logo.png", "color": "#3178C6" },
+  { "name": "Astro", "logo": "/logos/Astro_logo.svg" },
+  { "name": "Angular", "logo": "/logos/Angular_logo.png" },
+  { "name": "React", "logo": "/logos/React_logo.svg" },
+  { "name": "Godot", "logo": "/logos/Godot_logo.png" },
+  { "name": "MySQL", "logo": "/logos/Mysql_logo.png", "color": "#4479A1" },
+  { "name": "Tailwind", "logo": "/logos/Tailwind_logo.svg" },
+  { "name": "NestJS", "logo": "/logos/NestJS_logo.svg" }
+]

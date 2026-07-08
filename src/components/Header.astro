@@ -1,0 +1,497 @@
+---
+// Header.astro
+---
+
+<header 
+  id="main-header" 
+  class="fixed top-0 left-0 right-0 z-50 py-4 px-6 md:px-12 flex items-center justify-between"
+>
+  <!-- Left Section: Logo LA & Nav Links -->
+  <div class="flex items-center gap-6 md:gap-8">
+    <!-- Logo button "LA" -->
+    <button 
+      id="logo-btn"
+      class="w-10 h-10 rounded-full border-2 border-text-primary dark:border-text-dark flex items-center justify-center font-bold text-sm hover:bg-text-primary hover:text-bg-primary dark:hover:bg-text-dark dark:hover:text-bg-dark transition-all duration-300 focus:outline-none cursor-pointer"
+      aria-label="Ir al inicio"
+    >
+      LA
+    </button>
+
+    <!-- Desktop Navigation Links -->
+    <nav class="hidden md:flex items-center gap-6">
+      <a 
+        href="#projects" 
+        data-i18n="nav.projects"
+        class="font-medium text-sm text-text-primary/70 hover:text-text-primary dark:text-text-dark/70 dark:hover:text-text-dark transition-colors duration-300"
+      >
+        Proyectos
+      </a>
+      <a 
+        href="#contact" 
+        data-i18n="nav.contact"
+        class="font-medium text-sm text-text-primary/70 hover:text-text-primary dark:text-text-dark/70 dark:hover:text-text-dark transition-colors duration-300"
+      >
+        Contacto
+      </a>
+    </nav>
+  </div>
+
+  <!-- Right Section: Desktop Dropdowns (Theme & Language) -->
+  <div class="hidden md:flex items-center gap-4">
+    <!-- Theme Dropdown -->
+    <div class="relative dropdown-container">
+      <button 
+        id="theme-dropdown-btn"
+        class="flex items-center gap-2 px-3 py-2 rounded-lg border border-text-primary/10 dark:border-text-dark/10 hover:bg-text-primary/5 dark:hover:bg-text-dark/5 transition-all duration-300 text-sm font-medium focus:outline-none cursor-pointer"
+      >
+        <!-- Dynamic icon based on selection (initialized by JS) -->
+        <span id="theme-active-icon">
+          <!-- Monitor (System) by default -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></svg>
+        </span>
+        <span id="theme-active-label" data-i18n="theme.system">System</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="ml-1 opacity-70"><path d="m6 9 6 6 6-6"/></svg>
+      </button>
+
+      <!-- Dropdown Content -->
+      <div 
+        id="theme-dropdown-menu"
+        class="absolute right-0 mt-2 w-40 rounded-xl border border-text-primary/10 dark:border-text-dark/10 bg-bg-primary dark:bg-bg-dark shadow-xl opacity-0 pointer-events-none transform translate-y-2 transition-all duration-300 z-50 overflow-hidden"
+      >
+        <button 
+          data-theme-value="system"
+          class="flex items-center gap-2.5 w-full text-left px-4 py-2.5 text-sm hover:bg-text-primary/5 dark:hover:bg-text-dark/5 transition-colors cursor-pointer"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></svg>
+          <span data-i18n="theme.system">System</span>
+        </button>
+        <button 
+          data-theme-value="light"
+          class="flex items-center gap-2.5 w-full text-left px-4 py-2.5 text-sm hover:bg-text-primary/5 dark:hover:bg-text-dark/5 transition-colors cursor-pointer"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+          <span data-i18n="theme.light">Claro</span>
+        </button>
+        <button 
+          data-theme-value="dark"
+          class="flex items-center gap-2.5 w-full text-left px-4 py-2.5 text-sm hover:bg-text-primary/5 dark:hover:bg-text-dark/5 transition-colors cursor-pointer"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+          <span data-i18n="theme.dark">Oscuro</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Language Dropdown -->
+    <div class="relative dropdown-container">
+      <button 
+        id="lang-dropdown-btn"
+        class="flex items-center gap-2 px-3 py-2 rounded-lg border border-text-primary/10 dark:border-text-dark/10 hover:bg-text-primary/5 dark:hover:bg-text-dark/5 transition-all duration-300 text-sm font-medium focus:outline-none cursor-pointer"
+      >
+        <!-- Translation Icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></svg>
+        <span id="lang-active-label">Español</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="ml-1 opacity-70"><path d="m6 9 6 6 6-6"/></svg>
+      </button>
+
+      <!-- Dropdown Content -->
+      <div 
+        id="lang-dropdown-menu"
+        class="absolute right-0 mt-2 w-36 rounded-xl border border-text-primary/10 dark:border-text-dark/10 bg-bg-primary dark:bg-bg-dark shadow-xl opacity-0 pointer-events-none transform translate-y-2 transition-all duration-300 z-50 overflow-hidden"
+      >
+        <button 
+          data-lang-value="es"
+          class="flex items-center justify-between w-full text-left px-4 py-2.5 text-sm hover:bg-text-primary/5 dark:hover:bg-text-dark/5 transition-colors cursor-pointer"
+        >
+          <span data-i18n="lang.es">Español</span>
+          <span class="text-xs opacity-50">ES</span>
+        </button>
+        <button 
+          data-lang-value="en"
+          class="flex items-center justify-between w-full text-left px-4 py-2.5 text-sm hover:bg-text-primary/5 dark:hover:bg-text-dark/5 transition-colors cursor-pointer"
+        >
+          <span data-i18n="lang.en">Inglés</span>
+          <span class="text-xs opacity-50">EN</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Section: Hamburger Button -->
+  <div class="flex md:hidden items-center">
+    <button 
+      id="mobile-menu-btn"
+      class="p-2 rounded-lg border border-text-primary/10 dark:border-text-dark/10 hover:bg-text-primary/5 dark:hover:bg-text-dark/5 transition-all focus:outline-none cursor-pointer"
+      aria-label="Abrir menú"
+    >
+      <!-- Hamburger Icon -->
+      <svg id="hamburger-icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="transition-transform duration-300"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+      <!-- Close Icon -->
+      <svg id="close-icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="hidden transition-transform duration-300"><line x1="18" x2="6" y1="6" y2="18"/><line x1="6" x2="18" y1="6" y2="18"/></svg>
+    </button>
+  </div>
+
+  <!-- Responsive Mobile Menu Panel -->
+  <div 
+    id="mobile-menu-panel"
+    class="absolute top-full left-0 right-0 mt-2 mx-4 p-6 rounded-2xl border border-text-primary/10 dark:border-text-dark/10 bg-bg-primary/95 dark:bg-bg-dark/95 backdrop-blur-lg shadow-2xl flex-col gap-6 md:hidden hidden opacity-0 pointer-events-none transform translate-y-[-10px] transition-all duration-300 z-40"
+  >
+    <!-- Nav buttons -->
+    <div class="flex flex-col gap-4">
+      <a 
+        href="#projects" 
+        id="mobile-projects-link"
+        data-i18n="nav.projects"
+        class="text-lg font-semibold border-b border-text-primary/5 dark:border-text-dark/5 pb-2 cursor-pointer"
+      >
+        Proyectos
+      </a>
+      <a 
+        href="#contact" 
+        id="mobile-contact-link"
+        data-i18n="nav.contact"
+        class="text-lg font-semibold border-b border-text-primary/5 dark:border-text-dark/5 pb-2 cursor-pointer"
+      >
+        Contacto
+      </a>
+    </div>
+
+    <!-- Accordion lists -->
+    <div class="flex flex-col gap-4">
+      <!-- Theme Accordion -->
+      <div class="flex flex-col">
+        <button 
+          id="mobile-theme-accordion-btn"
+          class="flex items-center justify-between w-full text-left text-lg font-semibold border-b border-text-primary/5 dark:border-text-dark/5 pb-2 cursor-pointer"
+        >
+          <div class="flex items-center gap-2">
+            <span id="mobile-theme-active-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></svg>
+            </span>
+            <span data-i18n="theme.system">System</span>
+          </div>
+          <svg id="mobile-theme-arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="transform transition-transform duration-300"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <!-- Sublist -->
+        <div id="mobile-theme-sublist" class="hidden flex-col pl-4 mt-2 gap-3 overflow-hidden transition-all duration-300">
+          <button 
+            data-theme-value="system"
+            class="flex items-center gap-3 py-1 text-sm font-medium opacity-75 hover:opacity-100 cursor-pointer"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></svg>
+            <span data-i18n="theme.system">System</span>
+          </button>
+          <button 
+            data-theme-value="light"
+            class="flex items-center gap-3 py-1 text-sm font-medium opacity-75 hover:opacity-100 cursor-pointer"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+            <span data-i18n="theme.light">Claro</span>
+          </button>
+          <button 
+            data-theme-value="dark"
+            class="flex items-center gap-3 py-1 text-sm font-medium opacity-75 hover:opacity-100 cursor-pointer"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+            <span data-i18n="theme.dark">Oscuro</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Language Accordion -->
+      <div class="flex flex-col">
+        <button 
+          id="mobile-lang-accordion-btn"
+          class="flex items-center justify-between w-full text-left text-lg font-semibold border-b border-text-primary/5 dark:border-text-dark/5 pb-2 cursor-pointer"
+        >
+          <div class="flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></svg>
+            <span id="mobile-lang-active-label">Español</span>
+          </div>
+          <svg id="mobile-lang-arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="transform transition-transform duration-300"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <!-- Sublist -->
+        <div id="mobile-lang-sublist" class="hidden flex-col pl-4 mt-2 gap-3 overflow-hidden transition-all duration-300">
+          <button 
+            data-lang-value="es"
+            class="flex items-center justify-between py-1 text-sm font-medium opacity-75 hover:opacity-100 cursor-pointer"
+          >
+            <span data-i18n="lang.es">Español</span>
+            <span class="text-xs opacity-50">ES</span>
+          </button>
+          <button 
+            data-lang-value="en"
+            class="flex items-center justify-between py-1 text-sm font-medium opacity-75 hover:opacity-100 cursor-pointer"
+          >
+            <span data-i18n="lang.en">Inglés</span>
+            <span class="text-xs opacity-50">EN</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  // Elements
+  const header = document.getElementById('main-header')!;
+  const logoBtn = document.getElementById('logo-btn')!;
+  
+  // Theme elements
+  const themeBtn = document.getElementById('theme-dropdown-btn')!;
+  const themeMenu = document.getElementById('theme-dropdown-menu')!;
+  const themeActiveLabel = document.getElementById('theme-active-label')!;
+  const themeActiveIcon = document.getElementById('theme-active-icon')!;
+  
+  // Language elements
+  const langBtn = document.getElementById('lang-dropdown-btn')!;
+  const langMenu = document.getElementById('lang-dropdown-menu')!;
+  const langActiveLabel = document.getElementById('lang-active-label')!;
+
+  // Mobile menu elements
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn')!;
+  const mobileMenuPanel = document.getElementById('mobile-menu-panel')!;
+  const hamburgerIcon = document.getElementById('hamburger-icon')!;
+  const closeIcon = document.getElementById('close-icon')!;
+  
+  const mobileThemeAccBtn = document.getElementById('mobile-theme-accordion-btn')!;
+  const mobileThemeSublist = document.getElementById('mobile-theme-sublist')!;
+  const mobileThemeArrow = document.getElementById('mobile-theme-arrow')!;
+  
+  const mobileLangAccBtn = document.getElementById('mobile-lang-accordion-btn')!;
+  const mobileLangSublist = document.getElementById('mobile-lang-sublist')!;
+  const mobileLangArrow = document.getElementById('mobile-lang-arrow')!;
+  
+  const mobileThemeActiveIcon = document.getElementById('mobile-theme-active-icon')!;
+  const mobileLangActiveLabel = document.getElementById('mobile-lang-active-label')!;
+
+  const mobileProjectsLink = document.getElementById('mobile-projects-link')!;
+  const mobileContactLink = document.getElementById('mobile-contact-link')!;
+
+  // 1. Hide/Show header on scroll (gradually)
+  let lastScrollY = window.scrollY;
+  window.addEventListener('scroll', () => {
+    const currentScrollY = window.scrollY;
+    
+    // Header background/blur/shadow when scrolling
+    if (currentScrollY > 10) {
+      header.classList.add('bg-bg-primary/80', 'dark:bg-bg-dark/80', 'backdrop-blur-md', 'border-b', 'border-text-primary/10', 'dark:border-text-dark/10', 'shadow-sm');
+    } else {
+      header.classList.remove('bg-bg-primary/80', 'dark:bg-bg-dark/80', 'backdrop-blur-md', 'border-b', 'border-text-primary/10', 'dark:border-text-dark/10', 'shadow-sm');
+    }
+
+    if (currentScrollY > lastScrollY && currentScrollY > 100) {
+      header.classList.add('header-hidden');
+    } else {
+      header.classList.remove('header-hidden');
+    }
+    lastScrollY = currentScrollY;
+  });
+
+  // Logo button - Scroll to top
+  logoBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // 2. Dropdown management (Desktop)
+  function toggleDropdown(menu: HTMLElement) {
+    const isClosed = menu.classList.contains('pointer-events-none');
+    closeAllDropdowns();
+    if (isClosed) {
+      menu.classList.remove('pointer-events-none', 'opacity-0', 'translate-y-2');
+      menu.classList.add('opacity-100', 'translate-y-0');
+    }
+  }
+
+  function closeAllDropdowns() {
+    [themeMenu, langMenu].forEach(menu => {
+      menu.classList.add('pointer-events-none', 'opacity-0', 'translate-y-2');
+      menu.classList.remove('opacity-100', 'translate-y-0');
+    });
+  }
+
+  themeBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    toggleDropdown(themeMenu);
+  });
+
+  langBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    toggleDropdown(langMenu);
+  });
+
+  document.addEventListener('click', () => {
+    closeAllDropdowns();
+  });
+
+  // Theme SVG Icons definitions
+  const themeIcons = {
+    system: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></svg>`,
+    light: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>`,
+    dark: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>`
+  };
+
+  // 3. Theme toggle logic
+  function applyTheme(theme: 'system' | 'light' | 'dark') {
+    localStorage.setItem('theme', theme);
+    document.documentElement.dataset.theme = theme;
+
+    if (
+      theme === 'dark' || 
+      (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches)
+    ) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+
+    // Update Desktop Header active state
+    themeActiveIcon.innerHTML = themeIcons[theme];
+    themeActiveLabel.setAttribute('data-i18n', `theme.${theme}`);
+    
+    // Update Mobile Header active state
+    mobileThemeActiveIcon.innerHTML = themeIcons[theme];
+    const mobThemeSpan = mobileThemeAccBtn.querySelector('span[data-i18n]')!;
+    mobThemeSpan.setAttribute('data-i18n', `theme.${theme}`);
+
+    // Re-run translations to update text
+    const currentLang = localStorage.getItem('lang') || 'es';
+    if ((window as any).updateTranslations) {
+      (window as any).updateTranslations(currentLang);
+    }
+  }
+
+  // Bind Theme Buttons
+  document.querySelectorAll('[data-theme-value]').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const themeVal = btn.getAttribute('data-theme-value') as 'system' | 'light' | 'dark';
+      applyTheme(themeVal);
+      closeAllDropdowns();
+      
+      // Close mobile menu if clicked inside mobile menu
+      if (btn.closest('#mobile-menu-panel')) {
+        closeMobileMenu();
+      }
+    });
+  });
+
+  // Initial Theme UI Sync
+  const initialTheme = (localStorage.getItem('theme') || 'system') as 'system' | 'light' | 'dark';
+  applyTheme(initialTheme);
+
+  // 4. Language selection logic
+  function applyLanguage(lang: 'es' | 'en') {
+    if ((window as any).updateTranslations) {
+      (window as any).updateTranslations(lang);
+    }
+    
+    // Update desktop button label
+    langActiveLabel.textContent = lang === 'es' ? 'Español' : 'English';
+    
+    // Update mobile button label
+    mobileLangActiveLabel.textContent = lang === 'es' ? 'Español' : 'English';
+  }
+
+  // Bind Language Buttons
+  document.querySelectorAll('[data-lang-value]').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const langVal = btn.getAttribute('data-lang-value') as 'es' | 'en';
+      applyLanguage(langVal);
+      closeAllDropdowns();
+
+      // Close mobile menu if clicked inside mobile menu
+      if (btn.closest('#mobile-menu-panel')) {
+        closeMobileMenu();
+      }
+    });
+  });
+
+  // Listen to lang-change events to sync UI state
+  window.addEventListener('lang-change', (e: any) => {
+    const lang = e.detail.lang;
+    langActiveLabel.textContent = lang === 'es' ? 'Español' : 'English';
+    mobileLangActiveLabel.textContent = lang === 'es' ? 'Español' : 'English';
+  });
+
+  // Sync initial language label
+  const initialLang = (localStorage.getItem('lang') || 'es') as 'es' | 'en';
+  applyLanguage(initialLang);
+
+  // 5. Mobile Menu toggling
+  function openMobileMenu() {
+    mobileMenuPanel.classList.remove('hidden');
+    // Tick delay to trigger transitions
+    setTimeout(() => {
+      mobileMenuPanel.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-[-10px]');
+      mobileMenuPanel.classList.add('opacity-100', 'pointer-events-auto', 'translate-y-0');
+      hamburgerIcon.classList.add('hidden');
+      closeIcon.classList.remove('hidden');
+    }, 10);
+  }
+
+  function closeMobileMenu() {
+    mobileMenuPanel.classList.remove('opacity-100', 'pointer-events-auto', 'translate-y-0');
+    mobileMenuPanel.classList.add('opacity-0', 'pointer-events-none', 'translate-y-[-10px]');
+    hamburgerIcon.classList.remove('hidden');
+    closeIcon.classList.add('hidden');
+    
+    // Collapse accordion sublists
+    mobileThemeSublist.classList.add('hidden');
+    mobileThemeSublist.classList.remove('flex');
+    mobileThemeArrow.classList.remove('rotate-180');
+    
+    mobileLangSublist.classList.add('hidden');
+    mobileLangSublist.classList.remove('flex');
+    mobileLangArrow.classList.remove('rotate-180');
+
+    setTimeout(() => {
+      if (mobileMenuPanel.classList.contains('opacity-0')) {
+        mobileMenuPanel.classList.add('hidden');
+      }
+    }, 300);
+  }
+
+  mobileMenuBtn.addEventListener('click', () => {
+    const isHidden = mobileMenuPanel.classList.contains('hidden');
+    if (isHidden) {
+      openMobileMenu();
+    } else {
+      closeMobileMenu();
+    }
+  });
+
+  // Mobile Accordion: Theme
+  mobileThemeAccBtn.addEventListener('click', () => {
+    const isClosed = mobileThemeSublist.classList.contains('hidden');
+    if (isClosed) {
+      mobileThemeSublist.classList.remove('hidden');
+      mobileThemeSublist.classList.add('flex');
+      mobileThemeArrow.classList.add('rotate-180');
+    } else {
+      mobileThemeSublist.classList.add('hidden');
+      mobileThemeSublist.classList.remove('flex');
+      mobileThemeArrow.classList.remove('rotate-180');
+    }
+  });
+
+  // Mobile Accordion: Language
+  mobileLangAccBtn.addEventListener('click', () => {
+    const isClosed = mobileLangSublist.classList.contains('hidden');
+    if (isClosed) {
+      mobileLangSublist.classList.remove('hidden');
+      mobileLangSublist.classList.add('flex');
+      mobileLangArrow.classList.add('rotate-180');
+    } else {
+      mobileLangSublist.classList.add('hidden');
+      mobileLangSublist.classList.remove('flex');
+      mobileLangArrow.classList.remove('rotate-180');
+    }
+  });
+
+  // Close mobile menu on anchor clicks
+  [mobileProjectsLink, mobileContactLink].forEach(link => {
+    link.addEventListener('click', () => {
+      closeMobileMenu();
+    });
+  });
+</script>

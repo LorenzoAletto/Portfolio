@@ -1,0 +1,35 @@
+[
+  {
+    "id": 1,
+    "titleEs": "Plataforma de E-commerce",
+    "titleEn": "E-commerce Platform",
+    "descEs": "Una plataforma de e-commerce completa con gestión de productos, carrito de compras, autenticación de clientes y administradores, integración con Mercado Pago y sistema de email automatizado.",
+    "descEn": "A complete e-commerce platform with product management, shopping cart functionality, customer and admin authentication, Mercado Pago integration, and automated email communication.",
+    "tech": ["Angular", "NodeJS"],
+    "image": "/projects/Suplymardel_preview.png",
+    "video": "/videos/Suplymardel_demo.mp4",
+    "repo": "https://github.com/facundopidal/ProyectoLab4-SuplyMardel"
+  },
+  {
+    "id": 2,
+    "titleEs": "Globant Game Jam Burbrujas",
+    "titleEn": "Globant Game Jam Burbrujas",
+    "descEs": "Juego desarrollado en un plazo de 2 días como parte del evento Globant Game Jam, aplicando diseño, programación y desarrollo de mecánicas en un entorno de creación intensiva.",
+    "descEn": "Game developed within a 2-day timeframe as part of the Globant Game Jam event, combining design, programming, and gameplay mechanics development in an intensive creative environment.",
+    "tech": ["Godot"],
+    "image": "/projects/Burbrujas.png",
+    "video": "/videos/Burbrujas_demo.mp4",
+    "repo": "https://github.com/lorenzoaletto/financial-dashboard"
+  },
+  {
+    "id": 3,
+    "titleEs": "Club Masters (en desarrollo)",
+    "titleEn": "Club Masters (in development)",
+    "descEs": "Una plataforma completa de gestión de fútbol online donde los usuarios crean y administran sus propios clubes, compiten en ligas con amigos u otros jugadores, coleccionan e intercambian cartas de futbolistas, negocian transferencias y fortalecen estratégicamente sus equipos mediante un sistema de progresión inmersivo.",
+    "descEn": "A complete online football management platform where users create and manage their own clubs, compete in leagues with friends or other players, collect and trade player cards, negotiate transfers, and strategically build stronger squads through an immersive progression system.",
+    "tech": ["React", "Prisma", "Supabase"],
+    "image": "/projects/Clubmasters_preview.png",
+    "video": "/videos/Clubmasters_demo.mp4",
+    "repo": "https://github.com/AriHarbo/clubmasters"
+  }
+]
