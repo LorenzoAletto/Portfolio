@@ -119,6 +119,16 @@ html.dark .social-btn:hover {
   color: var(--color-bg-dark);
 }
 
+.cv-btn {
+  width: auto;
+  padding: 0 0.9rem;
+  gap: 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+}
+
 /* Tech Waves */
 .tech-waves-container {
   display: flex;
