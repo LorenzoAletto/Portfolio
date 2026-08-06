@@ -260,7 +260,7 @@
   const cvBtn = document.getElementById("cv-download-btn")! as HTMLAnchorElement;
 
   function updateCvLink(lang: string) {
-    cvBtn.href = `/cv/LorenzoAletto-cv-${lang === "en" ? "en" : "es"}.docx`;
+    cvBtn.href = `/cv/LorenzoAletto-cv-${lang === "en" ? "en" : "es"}.pdf`;
   }
 
   updateCvLink(getCurrentLang());
